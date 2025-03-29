@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: single-job
+spec:
+  ttlSecondsAfterFinished: 30  # Delete job after 30 seconds
+  template:
+    spec:
+      containers:
+      - name: my-container
+        image: busybox
+        command: ["echo", "Hello Kubernetes Job"]
+      restartPolicy: Never
+
